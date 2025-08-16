@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>c00lploit v1.0.1 Documentation</title>
+<style>
+    body { font-family: Arial, sans-serif; background-color: #1e1e1e; color: #f0f0f0; margin:0; padding:0;}
+    header { background-color: #2d2d2d; padding:20px; text-align:center; font-size:24px; font-weight:bold;}
+    .container { padding:20px; max-width:1200px; margin:auto; }
+    h2 { color: #00aaff; margin-top:30px; cursor: pointer;}
+    h3 { color: #00ffff; margin-top:15px; }
+    pre { background-color: #2d2d2d; padding:10px; border-radius:8px; overflow-x:auto; }
+    code { color: #00ffea; }
+    a { color: #00aaff; text-decoration:none; }
+    ul { margin-left:20px; }
+    li { margin-bottom:5px; }
+    .section { margin-bottom:30px; }
+    .collapsible-content { display:none; padding-left: 15px; border-left: 2px solid #00aaff; margin-top:5px; }
+    .example-section { background-color: #2d2d2d; padding:15px; border-radius:10px; margin-top:10px; }
+</style>
+</head>
+<body>
+
+<header>c00lploit v1.0.1 Documentation</header>
+
+<div class="container">
+
+<div class="section">
+<h2>Overview</h2>
+<p>c00lploit v1.0.1 is a modular Lua-based UI library for Roblox, providing draggable windows, tabs, buttons, toggles, sliders, dropdowns, and notifications.</p>
+</div>
+
+<div class="section">
+<h2>Features</h2>
+<ul>
+    <li>Draggable main window</li>
+    <li>Side tab navigation</li>
+    <li>Scrollable sections</li>
+    <li>UI Components: Buttons, Toggles, Sliders, Dropdowns</li>
+    <li>Notifications stacked in top-right corner</li>
+    <li>Version label display</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Installation</h2>
+<p>Insert the Lua script into a <code>LocalScript</code> in Roblox (e.g., inside <code>StarterPlayerScripts</code>).</p>
+</div>
+
+<div class="section">
+<h2>Usage</h2>
+<pre><code>local c00lploit = require(game.ServerScriptService.c00lploit)
+
+local objGen = c00lploit.getObjGen()
+local Gui = objGen.getObjects()
+
+local tab1, tabBtn1 = objGen:CreateTab("Tab 1", Gui)
+local section1 = objGen:CreateSection("Section 1", tab1)
+
+objGen:CreateButton("Click Me", section1, function()
+    objGen:Notify(Gui, "Button Clicked!")
+end)</code></pre>
+</div>
+
+<div class="section">
+<h2>API Reference</h2>
+
+<h3 class="collapsible">getObjGen()</h3>
+<div class="collapsible-content">
+<p>Returns an object generator with methods to create UI components.</p>
+</div>
+
+<h3 class="collapsible">getObjects()</h3>
+<div class="collapsible-content">
+<p>Initializes and returns the GUI components.</p>
+</div>
+
+<h3 class="collapsible">CreateTab(name, parent)</h3>
+<div class="collapsible-content">
+<p>Creates a new tab with the specified name under the given parent.</p>
+<ul>
+<li>name: string — tab name</li>
+<li>parent: GUI object — parent window</li>
+</ul>
+<p>Returns the created tab folder and the tab button.</p>
+</div>
+
+<h3 class="collapsible">CreateSection(name, parent)</h3>
+<div class="collapsible-content">
+<p>Creates a scrollable section inside a tab.</p>
+</div>
+
+<h3 class="collapsible">CreateButton(name, parent, callback)</h3>
+<div class="collapsible-content">
+<p>Creates a button.</p>
+<pre><code>objGen:CreateButton("Button Name", parentSection, function()
+    print("Clicked!")
+end)</code></pre>
+</div>
+
+<h3 class="collapsible">CreateToggle(name, parent, callback)</h3>
+<div class="collapsible-content">
+<p>Creates an on/off toggle.</p>
+</div>
+
+<h3 class="collapsible">CreateSlider(name, parent, min, max, callback)</h3>
+<div class="collapsible-content">
+<p>Creates a slider.</p>
+</div>
+
+<h3 class="collapsible">CreateDropdown(name, parent, options, callback)</h3>
+<div class="collapsible-content">
+<p>Creates a dropdown menu with selectable options.</p>
+</div>
+
+<h3 class="collapsible">Notify(parent, text)</h3>
+<div class="collapsible-content">
+<p>Displays a notification at the top-right corner of the screen.</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Example: loadstring Usage</h2>
+<div class="example-section">
+<p>You can execute external scripts using <code>loadstring</code>:</p>
+<pre><code>loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-bang-gui-36038", true))()</code></pre>
+</div>
+</div>
+
+<div class="section">
+<h2>Customization</h2>
+<pre><code>Gui.MainWindow.BackgroundColor3 = Color3.fromRGB(50,50,50)</code></pre>
+<p>Create custom buttons:</p>
+<pre><code>local customButton = Instance.new("TextButton")
+customButton.Size = UDim2.new(0,200,0,50)
+customButton.Text = "Custom Button"
+customButton.BackgroundColor3 = Color3.fromRGB(100,100,100)
+customButton.Parent = section1</code></pre>
+</div>
+
+<div class="section">
+<h2>License</h2>
+<p>MIT License — free to use and modify.</p>
+</div>
+
+<div class="section">
+<h2>Changelog</h2>
+<ul>
+<li>v1.0.1: Initial release with draggable window, tabs, sections, and UI components</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>Raw Source</h2>
+<p><a href="https://raw.githubusercontent.com/C00lPLOIT-INTERFACE-SUITE/C00LPLOIT/refs/heads/main/source.lua" target="_blank">View Lua source</a></p>
+</div>
+
+</div>
+
+<script>
+const collapsibles = document.querySelectorAll('.collapsible');
+collapsibles.forEach(col => {
+    col.addEventListener('click', () => {
+        const content = col.nextElementSibling;
+        if(content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
